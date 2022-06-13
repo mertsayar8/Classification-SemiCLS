@@ -11,7 +11,7 @@ from medmnist import INFO, Evaluator
 
 from .transforms.randaugment import RandAugmentMC
 
-# split CIFAR10 into labled/unlabed/val set
+# split pathmnist into labled/unlabed/val set
 def get_pathmnist(args):
     transform_all = transforms.Compose([
         transforms.ToTensor(),
