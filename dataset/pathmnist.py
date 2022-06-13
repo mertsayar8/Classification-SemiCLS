@@ -23,11 +23,9 @@ def get_pathmnist(args):
     train_labeled_idxs, train_unlabeled_idxs = x_u_split(
         args, base_dataset.labels)
 
-    train_labeled_dataset = PATHMNISTSSL(
-        root, train_labeled_idxs, transform=transform_all)
+    train_labeled_dataset = PATHMNISTSSL(train_labeled_idxs, transform=transform_all)
 
-    train_unlabeled_dataset = PATHMNISTSSL(
-        root, train_unlabeled_idxs , transform=transform_all)
+    train_unlabeled_dataset = PATHMNISTSSL(train_unlabeled_idxs , transform=transform_all)
 
     test_dataset = medmnist.dataset.PathMNIST( split='test', transform=transform_all, download=False)
 
@@ -64,12 +62,12 @@ def get_pathmnist(args):
                          target_transform=target_transform,
                          download=download)
         if indexs is not None:
-            self.data = self.data[indexs]
+            self.imgs = self.data[indexs]
             self.labels = np.array(self.labels)[indexs]
 
 
     def __getitem__(self, index):
-        img, target = self.data[index], self.labels[index]
+        img, target = self.imgs[index], self.labels[index]
         img = Image.fromarray(img)
 
         if self.transform is not None:
