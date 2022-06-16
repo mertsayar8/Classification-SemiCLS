@@ -3,7 +3,7 @@ import logging
 from copy import deepcopy
 
 from models import  resnet, wideresnet
-from models.resnet-mlmi import get_resnet18
+from models.resnetmlmi import get_resnet18
 
 models = {
     "wideresnet": wideresnet.build,
