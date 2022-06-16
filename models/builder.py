@@ -3,7 +3,7 @@ import logging
 from copy import deepcopy
 
 from models import  resnet, wideresnet
-from models.resnetmlmi import get_resnet18
+from models.resnetmlmi import Resnet18MLMI
 
 models = {
     "wideresnet": wideresnet.build,
@@ -20,7 +20,7 @@ def build(cfg, logger=None):
     type_name = init_params.pop("type")
     
     if type_name == "resnet18mlmi":
-        model = get_resnet18()
+        model = Resnet18MLMI()
         if logger is not None:
             logger.info("{} Total params: {:.2f}M".format(
                 type_name, sum(p.numel() for p in model.parameters()) / 1e6))
